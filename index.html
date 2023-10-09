@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP1</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p v-if="isVisible">L'élément est visible !</p>
+    <p v-else>L'élément n'est pas visible !</p>
+    <img v-show="isVisible" :src="imgUrl" alt="image">
+    <button v-on:click=" isVisible =! isVisible ">Afficher/Cacher le texte</button>
+
+    <input type="text" v-model="userInputImageUrl" placeholder="Entrez l'URL de l'image">
+    <button v-on:click="updateImageUrl">Mettre à jour l'image</button>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          isVisible: true,
+          imgUrl: "https://picsum.photos/200/300"
+        }
+      },
+      methods: {
+        updateImageUrl() {
+          this.imgUrl = this.userInputImageUrl;
+        }
+      }
+    });
+
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
